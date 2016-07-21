@@ -95,11 +95,12 @@
     				});
   				},
   				handleCommentSubmit: function(comment) {
-				    $.ajax({
+  					$.ajax({
       					url: this.props.url,
+      					contentType: 'application/json',
       					dataType: 'json',
       					type: 'POST',
-      					data: comment,
+      					data: JSON.stringify(comment),
       					success: function(data) {
         					this.setState({data: data});
       					}.bind(this),
@@ -125,6 +126,6 @@
 
 
 			ReactDOM.render(
-			  <CommentBox url="http://localhost:3000/api/comments" pollInterval={2000} />,
+			  <CommentBox url="http://localhost:8080/api/comments" pollInterval={20000000} />,
 			  document.getElementById('content')
 			);
