@@ -25,10 +25,10 @@ public class CommentsController {
 	private CommentDao commentDao;
 
 	@RequestMapping(value = "/comments", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public HttpEntity create(@Valid @RequestBody Comment comment) throws URISyntaxException {
+	public ResponseEntity create(@Valid @RequestBody Comment comment) throws URISyntaxException {
 
 		commentDao.save(comment);
-		return ResponseEntity.status(302).header("Location", "/comments").build();
+		return ResponseEntity.status(302).header("Location", "/api/comments").build();
 	}
 	
 	@RequestMapping(value= "/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
