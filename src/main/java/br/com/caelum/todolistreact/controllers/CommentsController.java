@@ -30,4 +30,9 @@ public class CommentsController {
 		commentDao.save(comment);
 		return ResponseEntity.status(302).header("Location", "/comments").build();
 	}
+	
+	@RequestMapping(value= "/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Iterable<Comment> lista(){
+		return commentDao.findAll();
+	}
 }
